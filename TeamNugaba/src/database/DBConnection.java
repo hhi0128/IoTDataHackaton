@@ -13,17 +13,16 @@ public class DBConnection {
 	
 	public DBConnection() {
 		try {
-			Class.forName("com.mysql.jdbc.Drvier");
-			con = DriverManager.getConnection("jdbc::mysql://localhost:3306/tutorial","root","root");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/tutorial","root","root");
 			st = con.createStatement();
 		} catch(Exception e) {
-			System.out.println("Database Connection Error +" + e.getMessage());
+			System.out.println("Database Connection Error : \n" + e.getMessage());
 		}
 	}
 	
 	public boolean isAdmin(String adminID, String adminPassword) {
 		try {
-			String SQL = "SELECT * FROM ADMIN WHERE adminID = '" + adminID +  "' and adminPassword = '" + adminPassword; 
+			String SQL = "SELECT * FROM ADMIN WHERE adminID = '" + adminID +  "' and adminPassword = '" + adminPassword + "'"; 
 			rs = st.executeQuery(SQL);
 			if(rs.next()) {
 				return true;
@@ -31,7 +30,7 @@ public class DBConnection {
 				return false;
 			}
 		} catch(Exception e) {
-			System.out.println("Database search Error" + e.getMessage());
+			System.out.println("Database search Error\n" + e.getMessage());
 		}
 		return false;
 	}
