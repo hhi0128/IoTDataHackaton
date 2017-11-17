@@ -3,8 +3,8 @@ package database;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		DBConnection connection = new DBConnection();
+		System.out.println("admin: " + connection.isAdmin("admin", "admin"));
 	}
 
 }
